@@ -13,15 +13,35 @@
 .CardTitle {
   color: #fff;
   font-weight: 600;
+  font-size: 2em;
+  text-decoration: none;
+}
+
+.CardTitle:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .CardButton {
   border: none;
   background-color: #fff;
   border: 2px solid #262626;
+  margin-right: 10px;
 }
 
 .CardContainer:hover {
   text-decoration: underline;
   color: #fff;
+}
+
+.InputTitle {
+  font-size: 0.8rem;
+}
+
+.Hidden {
+  display: none;
+}
+
+.Active {
+  display: block;
 }

@@ -4,28 +4,52 @@ import Card from "react-bootstrap/Card";
 
 function ArticleCard(props) {
   console.log(props);
-  const [title, setTitle] = useState("");
 
-  const [edit, setEdit] = useState();
+  const [edit, setEdit] = useState(props.title);
+  const [freeMode, editMode] = useState("Edit");
+
+  function newEdit() {
+    setEdit(<input></input>);
+  }
 
   let imageUrl = props.imageUrl + "&height=1000";
   return (
     <>
-      <a href={props.url} className={styles.CardContainer}>
-        <div
-          style={{
-            backgroundImage: `url(${imageUrl})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            height: 500,
-          }}
-        ></div>
+      <div className={styles.CardContainer}>
+        <a href={props.url}>
+          <div
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              height: 500,
+            }}
+          ></div>
+        </a>
         <div className={styles.CardBody}>
-          <h2 className={styles.CardTitle}>{props.title}</h2>
+          {props.edit ? (
+            <>
+              <input
+                type="text"
+                name="name"
+                placeholder={edit}
+                className={styles.InputTitle}
+              />
+            </>
+          ) : (
+            <>
+              <a href={props.url} className={styles.CardTitle}>
+                {edit}
+              </a>
+            </>
+          )}
         </div>
-      </a>
-      <button className={styles.CardButton}>Edit</button>
+      </div>
+      <button className={styles.CardButton} onClick={newEdit}>
+        {freeMode}
+      </button>
+      <button className={styles.CardButton}>Update</button>
     </>
   );
 }
