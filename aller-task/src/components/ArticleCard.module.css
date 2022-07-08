@@ -1,0 +1,27 @@
+.CardContainer {
+  text-decoration: none;
+}
+
+.CardBody {
+  background-color: #d60000;
+}
+
+.CardLink {
+  text-decoration: none;
+}
+
+.CardTitle {
+  color: #fff;
+  font-weight: 600;
+}
+
+.CardButton {
+  border: none;
+  background-color: #fff;
+  border: 2px solid #262626;
+}
+
+.CardContainer:hover {
+  text-decoration: underline;
+  color: #fff;
+}
