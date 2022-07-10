@@ -26,6 +26,7 @@ function ArticleCard(props) {
         <div className={styles.CardBody}>
           {editMode ? (
             <input
+              className={styles.InputTitle}
               onBlur={(event) => {
                 setTitle(event.target.value);
                 setEditMode(false);
@@ -33,7 +34,7 @@ function ArticleCard(props) {
               defaultValue={title}
             />
           ) : (
-            <a href={props.url}>
+            <a href={props.url} className={styles.CardLink}>
               <h2 className={styles.CardTitle}>{title}</h2>
             </a>
           )}

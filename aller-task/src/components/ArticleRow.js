@@ -5,15 +5,15 @@ import ArticleCard from "./ArticleCard";
 import styles from "./ArticleRow.module.css";
 
 function ArticleRow(props) {
-  const colAmmount = props.columns?.map((item) => (
-    <Col md={item.width}>
+  const columns = props.columns?.map((item, index) => (
+    <Col key={index} md={item.width}>
       <ArticleCard {...item} />
     </Col>
   ));
 
   return (
     <div>
-      <Row className={styles.RowStyle}>{colAmmount}</Row>
+      <Row className={styles.RowStyle}>{columns}</Row>
     </div>
   );
 }

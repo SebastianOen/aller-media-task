@@ -1,5 +1,4 @@
 import "./App.css";
-import ArticleCard from "./components/ArticleCard";
 import ArticleRow from "./components/ArticleRow";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
@@ -20,7 +19,9 @@ function App() {
 
     fetchData().catch(console.error);
   }, []);
-  const rows = data[0]?.map((result) => <ArticleRow {...result} />);
+  const rows = data[0]?.map((result, index) => (
+    <ArticleRow key={index} {...result} />
+  ));
 
   return (
     <div className="App">
