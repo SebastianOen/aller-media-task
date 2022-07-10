@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import styles from "./ArticleCard.module.css";
-import Card from "react-bootstrap/Card";
 
 function ArticleCard(props) {
-  console.log(props);
+  const [title, setTitle] = useState(props.title);
 
-  const [edit, setEdit] = useState(props.title);
-  const [freeMode, editMode] = useState("Edit");
+  const [editMode, setEditMode] = useState(false);
 
-  function newEdit() {
-    setEdit(<input></input>);
-  }
-
-  let imageUrl = props.imageUrl + "&height=1000";
+  const imageUrl = props.imageUrl + "&height=1000";
   return (
     <>
       <div className={styles.CardContainer}>
         <a href={props.url}>
           <div
+            role="img"
+            aria-label="missing description"
             style={{
               backgroundImage: `url(${imageUrl})`,
               backgroundSize: "cover",
@@ -28,28 +24,29 @@ function ArticleCard(props) {
           ></div>
         </a>
         <div className={styles.CardBody}>
-          {props.edit ? (
-            <>
-              <input
-                type="text"
-                name="name"
-                placeholder={edit}
-                className={styles.InputTitle}
-              />
-            </>
+          {editMode ? (
+            <input
+              onBlur={(event) => {
+                setTitle(event.target.value);
+                setEditMode(false);
+              }}
+              defaultValue={title}
+            />
           ) : (
-            <>
-              <a href={props.url} className={styles.CardTitle}>
-                {edit}
-              </a>
-            </>
+            <a href={props.url}>
+              <h2 className={styles.CardTitle}>{title}</h2>
+            </a>
           )}
         </div>
       </div>
-      <button className={styles.CardButton} onClick={newEdit}>
-        {freeMode}
+      <button
+        className={styles.CardButton}
+        onClick={() => {
+          setEditMode(!editMode);
+        }}
+      >
+        {editMode ? "Save" : "Edit"}
       </button>
-      <button className={styles.CardButton}>Update</button>
     </>
   );
 }

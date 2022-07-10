@@ -6,10 +6,6 @@
   background-color: #d60000;
 }
 
-.CardLink {
-  text-decoration: none;
-}
-
 .CardTitle {
   color: #fff;
   font-weight: 600;
@@ -35,13 +31,9 @@
 }
 
 .InputTitle {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
 }
 
-.Hidden {
-  display: none;
-}
-
-.Active {
-  display: block;
+a {
+  text-decoration: none;
 }
